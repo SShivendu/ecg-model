@@ -2,3 +2,4 @@ flask
 pickles
 numpy
 scikit-learn
+flask-cors
