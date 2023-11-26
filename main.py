@@ -4,15 +4,13 @@ from utils.model import Model
 from flask_cors import CORS
 
 app = Flask(__name__)
-CORS(app)
+CORS(app, origins="*")  # You can replace "*" with the specific domain or a list of allowed domains
 
-@app.route("/predict",methods=["POST"])
+@app.route("/predict", methods=["POST"])
 @validateRequest()
 def predict():
-  model : Model
-
-  model = Model(request.json)
-  return {"predicted_output" : int(model.predict())}
+    model = Model(request.json)
+    return {"predicted_output": int(model.predict())}
 
 if __name__ == "__main__":
-  app.run(debug=True,host="0.0.0.0")
+    app.run(debug=True, host="0.0.0.0")
